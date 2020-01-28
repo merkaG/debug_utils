@@ -1,6 +1,14 @@
 #! /usr/bin/perl
-eval "exec /usr/bin/perl -S $0 $*"
-	if 0;
+
+#following line has been added to avoid:
+# "
+# $* is no longer supported. Its use will be fatal in Perl 5.30 
+# "
+
+eval '(exit $?0)' && eval 'exec /usr/bin/perl -S $0 ${1+"$@"}'
+     && eval 'exec /usr/bin/perl -S $0 $argv:q'
+        if 0;
+
 # Copyright (C) 1997-2002, 2003, 2004 Free Software Foundation, Inc.
 # This file is part of the GNU C Library.
 # Contributed by Ulrich Drepper <drepper@gnu.org>, 1997.
